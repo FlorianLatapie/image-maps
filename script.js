@@ -83,10 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             initialPinchDistance = getDistance(touch1, touch2);
-            
-            // Calculate initial angle for rotation
-            initialRotation = getAngle(touch1, touch2) - currentRotation;
-            
+                        
             // Calculate the center point between the two touches
             lastTouchCenter = {
                 x: (touch1.clientX + touch2.clientX) / 2,
