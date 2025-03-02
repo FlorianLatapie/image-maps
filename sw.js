@@ -1,8 +1,15 @@
 const CACHE = "image-maps-offline-page";
+const FILES_TO_CACHE = [
+  "icon.png",
+  "index.html",
+  "manifest.json",
+  "script.js",
+  "styles.css",
+  "sw.js",
+  "zoom.js"
+];
 
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
-const offlineFallbackPage = "index.html";
 
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
@@ -13,7 +20,7 @@ self.addEventListener("message", (event) => {
 self.addEventListener('install', async (event) => {
   event.waitUntil(
     caches.open(CACHE)
-      .then((cache) => cache.add(offlineFallbackPage))
+      .then((cache) => cache.addAll(FILES_TO_CACHE))
   );
 });
 
@@ -43,7 +50,7 @@ self.addEventListener('fetch', (event) => {
       } catch (error) {
 
         const cache = await caches.open(CACHE);
-        const cachedResp = await cache.match(offlineFallbackPage);
+        const cachedResp = await cache.match('index.html');
         return cachedResp;
       }
     })());
