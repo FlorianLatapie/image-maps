@@ -6,6 +6,9 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    image-rendering: high-quality;
+    image-rendering: pixelated;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 body {

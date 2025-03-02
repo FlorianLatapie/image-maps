@@ -15,12 +15,12 @@
     </header>
     <div class="app">
         <div id="uploadArea" class="upload-area">
-            <p>Import a map or large image to view</p>
+            <p>Import an image of your map to pan, zoom and rotate it</p>
             <label for="imageInput" class="upload-button">Import Image</label>
             <input type="file" id="imageInput" accept="image/*">
         </div>
 
-        <div id="viewerArea" class="viewer-area hidden">
+        <div id="viewerArea" class="viewer-area hidden text-sm text-gray-600 mt-2">
             <div id="imageContainer" class="image-container">
                 <img id="mapImage" src="" alt="Uploaded map">
             </div>
@@ -30,7 +30,7 @@
 
         <div id="loading" class="loading hidden">
             <div class="spinner"></div>
-            <p>Import an image of your map to pan, zoom and rotate it</p>
+            <p>Loading your image...</p>
         </div>
     </div>
     <script>
