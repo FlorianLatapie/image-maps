@@ -94,9 +94,9 @@ input[type="file"] {
     -webkit-user-drag: none;
 }
 
-.reset-button, .back-button {
+.reset-button {
     position: absolute;
-    bottom: 20px;
+    bottom: 90px;
     padding: 10px 15px;
     border: none;
     border-radius: 20px;
@@ -108,10 +108,6 @@ input[type="file"] {
 
 .reset-button {
     right: 20px;
-}
-
-.back-button {
-    left: 20px;
 }
 
 .loading {

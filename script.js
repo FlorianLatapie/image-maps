@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapImage = document.getElementById('mapImage');
     const imageContainer = document.getElementById('imageContainer');
     const resetButton = document.getElementById('resetButton');
-    const backButton = document.getElementById('backButton');
     const loading = document.getElementById('loading');
 
     // State variables
@@ -66,14 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reset view button
     resetButton.addEventListener('click', resetView);
-    
-    // Back button
-    backButton.addEventListener('click', () => {
-        viewerArea.classList.add('hidden');
-        uploadArea.classList.remove('hidden');
-        imageInput.value = '';
-        resetView();
-    });
 
     function handleTouchStart(e) {
         e.preventDefault();
