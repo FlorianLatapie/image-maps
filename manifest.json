@@ -1,0 +1,15 @@
+{
+    "name": "Image map viewer",
+    "short_name": "Image map",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000",
+    "theme_color": "#000",
+    "icons": [
+        {
+            "src": "./icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
