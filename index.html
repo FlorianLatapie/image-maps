@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Map Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <div id="uploadArea" class="upload-area">
+            <h1>Map Viewer</h1>
+            <p>Import a map or large image to view</p>
+            <label for="imageInput" class="upload-button">Import Image</label>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+        
+        <div id="viewerArea" class="viewer-area hidden">
+            <div id="imageContainer" class="image-container">
+                <img id="mapImage" src="" alt="Uploaded map">
+            </div>
+            <button id="resetButton" class="reset-button">Reset View</button>
+            <button id="backButton" class="back-button">Upload New Image</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading your image...</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    color: #333;
+    touch-action: none;
+    position: fixed;
+}
+
+.app {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    max-width: 90%;
+}
+
+.upload-area h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.upload-area p {
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.upload-button {
+    background-color: #4285f4;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease;
+}
+
+.upload-button:active {
+    background-color: #3367d6;
+    transform: scale(0.98);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.viewer-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.reset-button, .back-button {
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 14px;
+    z-index: 20;
+}
+
+.reset-button {
+    right: 20px;
+}
+
+.back-button {
+    left: 20px;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    color: white;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
