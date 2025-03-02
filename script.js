@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Calculate initial angle for rotation
             initialRotation = getAngle(touch1, touch2) - currentRotation;
             
-            // Save the center point between the two touches
+            // Calculate the center point between the two touches
             lastTouchCenter = {
                 x: (touch1.clientX + touch2.clientX) / 2,
                 y: (touch1.clientY + touch2.clientY) / 2
@@ -109,30 +109,44 @@ document.addEventListener('DOMContentLoaded', () => {
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             
-            // Calculate new center point
-            const newTouchCenter = {
+            // Calculate center point of the gesture
+            const touchCenter = {
                 x: (touch1.clientX + touch2.clientX) / 2,
                 y: (touch1.clientY + touch2.clientY) / 2
             };
             
-            // Calculate new distance and update scale
+            // Calculate new scale
             const newDistance = getDistance(touch1, touch2);
-            const newScale = currentScale * (newDistance / initialPinchDistance);
+            const scaleChange = newDistance / initialPinchDistance;
+            const newScale = currentScale * scaleChange;
+            
+            // Calculate new rotation
+            const newAngle = getAngle(touch1, touch2);
+            const rotationChange = newAngle - initialRotation - currentRotation;
             
             // Limit zoom level
             if (newScale >= minScale && newScale <= maxScale) {
-                currentScale = newScale;
-                initialPinchDistance = newDistance;
+                // Calculate how much the touch center would move due to scaling and rotation
+                // Adjust translation to keep touch center fixed
+                const containerRect = imageContainer.getBoundingClientRect();
+                const containerCenterX = containerRect.left + containerRect.width / 2;
+                const containerCenterY = containerRect.top + containerRect.height / 2;
                 
-                // Update translation to keep the center point fixed
-                translateX += newTouchCenter.x - lastTouchCenter.x;
-                translateY += newTouchCenter.y - lastTouchCenter.y;
-                lastTouchCenter = newTouchCenter;
+                // Vector from container center to touch center
+                const vectorX = touchCenter.x - containerCenterX;
+                const vectorY = touchCenter.y - containerCenterY;
+                
+                // Adjust translation to compensate for scale change
+                translateX += vectorX * (1 - scaleChange);
+                translateY += vectorY * (1 - scaleChange);
+                
+                // Update values for next move
+                currentScale = newScale;
+                currentRotation += rotationChange;
+                initialPinchDistance = newDistance;
+                initialRotation = newAngle - currentRotation;
+                lastTouchCenter = touchCenter;
             }
-            
-            // Calculate new angle and update rotation
-            const newAngle = getAngle(touch1, touch2);
-            currentRotation = newAngle - initialRotation;
             
             updateTransform();
         }
@@ -164,9 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTransform() {
+        // Apply all transformations to the container
         imageContainer.style.transform = 
-            `translate(${translateX}px, ${translateY}px) rotate(${currentRotation}deg)`;
-        mapImage.style.transform = `scale(${currentScale})`;
+            `translate(${translateX}px, ${translateY}px) rotate(${currentRotation}deg) scale(${currentScale})`;
+        // Reset the image transform since we're applying all transforms to the container
+        mapImage.style.transform = 'none';
     }
 
     function resetView() {
@@ -191,4 +207,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('gesturestart', (e) => {
         e.preventDefault();
     }, { passive: false });
-}); 
+});
