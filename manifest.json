@@ -1,10 +1,14 @@
 {
     "name": "Image map viewer",
+    "short_name": "Image maps",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "description": "View your maps",
+    "lang": "en",
+    "dir": "auto",
     "theme_color": "#000000",
     "background_color": "#000000",
-    "short_name": "Image maps",
-    "id": "01",
-    "description": "Image map viewer",
+    "orientation": "any",
     "icons": [
         {
             "src": "./icon.png",
@@ -12,4 +16,4 @@
             "type": "image/png"
         }
     ]
-  }
+}
