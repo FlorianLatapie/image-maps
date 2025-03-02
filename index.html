@@ -9,9 +9,12 @@
     <link rel="icon" type="image/png" href="icon.png">
 </head>
 <body>
+    <header>
+        <img id="appIcon" src="icon.png" alt="">
+        <h1>Image maps</h1>
+    </header>
     <div class="app">
         <div id="uploadArea" class="upload-area">
-            <h1>Map Viewer</h1>
             <p>Import a map or large image to view</p>
             <label for="imageInput" class="upload-button">Import Image</label>
             <input type="file" id="imageInput" accept="image/*">
@@ -23,9 +26,11 @@
             </div>
         </div>
 
+        <p>Version 1.0</p>
+
         <div id="loading" class="loading hidden">
             <div class="spinner"></div>
-            <p>Loading your image...</p>
+            <p>Import an image of your map to pan, zoom and rotate it</p>
         </div>
     </div>
     <script>
