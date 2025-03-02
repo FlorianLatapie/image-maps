@@ -94,22 +94,6 @@ input[type="file"] {
     -webkit-user-drag: none;
 }
 
-.reset-button {
-    position: absolute;
-    bottom: 90px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 14px;
-    z-index: 20;
-}
-
-.reset-button {
-    right: 20px;
-}
-
 .loading {
     position: fixed;
     top: 0;
