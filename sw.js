@@ -4,7 +4,7 @@ const FILES_TO_CACHE = [
   "index.html",
   "manifest.json",
   "script.js",
-  "styles.css",
+  "style.css",
   "sw.js",
   "zoom.js"
 ];
